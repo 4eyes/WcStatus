@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D050C38719F15F8C00D21B20 /* SettingsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D050C38619F15F8C00D21B20 /* SettingsWindowController.m */; };
+		D050C38A19F1603E00D21B20 /* SettingsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D050C38919F1603E00D21B20 /* SettingsWindow.m */; };
 		D052CCF419EE989A003DFA97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D052CCF319EE989A003DFA97 /* main.m */; };
 		D052CCF719EE989A003DFA97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D052CCF619EE989A003DFA97 /* AppDelegate.m */; };
 		D052CCF919EE989A003DFA97 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D052CCF819EE989A003DFA97 /* Images.xcassets */; };
@@ -25,6 +27,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D050C38519F15F8C00D21B20 /* SettingsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsWindowController.h; sourceTree = "<group>"; };
+		D050C38619F15F8C00D21B20 /* SettingsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWindowController.m; sourceTree = "<group>"; };
+		D050C38819F1603E00D21B20 /* SettingsWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsWindow.h; sourceTree = "<group>"; };
+		D050C38919F1603E00D21B20 /* SettingsWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsWindow.m; sourceTree = "<group>"; };
 		D052CCEE19EE989A003DFA97 /* WcStatus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WcStatus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D052CCF219EE989A003DFA97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D052CCF319EE989A003DFA97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -81,6 +87,10 @@
 				D052CCF819EE989A003DFA97 /* Images.xcassets */,
 				D052CCFA19EE989A003DFA97 /* MainMenu.xib */,
 				D052CCF119EE989A003DFA97 /* Supporting Files */,
+				D050C38519F15F8C00D21B20 /* SettingsWindowController.h */,
+				D050C38619F15F8C00D21B20 /* SettingsWindowController.m */,
+				D050C38819F1603E00D21B20 /* SettingsWindow.h */,
+				D050C38919F1603E00D21B20 /* SettingsWindow.m */,
 			);
 			path = WcStatus;
 			sourceTree = "<group>";
@@ -210,7 +220,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D050C38A19F1603E00D21B20 /* SettingsWindow.m in Sources */,
 				D052CCF719EE989A003DFA97 /* AppDelegate.m in Sources */,
+				D050C38719F15F8C00D21B20 /* SettingsWindowController.m in Sources */,
 				D052CCF419EE989A003DFA97 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +410,7 @@
 				D052CD0D19EE989A003DFA97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D052CD0E19EE989A003DFA97 /* Build configuration list for PBXNativeTarget "WcStatusTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +419,7 @@
 				D052CD1019EE989A003DFA97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
