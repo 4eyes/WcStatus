@@ -1,0 +1,6 @@
+framework module RavenSwift {
+  umbrella header "RavenSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

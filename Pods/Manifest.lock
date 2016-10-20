@@ -1,0 +1,10 @@
+PODS:
+  - RavenSwift (0.4.0)
+
+DEPENDENCIES:
+  - RavenSwift
+
+SPEC CHECKSUMS:
+  RavenSwift: a90485acb670b09e29172c15bf8bc5f506d0a325
+
+COCOAPODS: 0.39.0

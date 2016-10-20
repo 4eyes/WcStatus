@@ -1,38 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+                <outlet property="delegate" destination="Irc-AJ-LIi" id="VM8-OO-oe1"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="Irc-AJ-LIi" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="WcStatus" customModuleProvider="target">
             <connections>
-                <outlet property="occupiedTime" destination="LQ8-cb-oAi" id="byp-ho-oHP"/>
-                <outlet property="statusMenu" destination="yX6-si-gsY" id="b9P-eR-afW"/>
+                <outlet property="occupiedTime" destination="LQ8-cb-oAi" id="IU1-nj-5Xx"/>
+                <outlet property="statusMenu" destination="yX6-si-gsY" id="EcG-M0-8vV"/>
             </connections>
         </customObject>
-        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="yX6-si-gsY">
             <items>
                 <menuItem title="WC Status" id="ChD-D7-1gP">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="00:00:00" enabled="NO" id="LQ8-cb-oAi">
+                <menuItem title="timer" enabled="NO" id="LQ8-cb-oAi" userLabel="StatusItem">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="TCf-Wr-EZS"/>
-                <menuItem title="Refresh" keyEquivalent="r" id="yN1-sy-9kn">
-                    <connections>
-                        <action selector="getDataFromJson:" target="-1" id="o8C-M5-OB7"/>
-                    </connections>
-                </menuItem>
                 <menuItem title="Settings" keyEquivalent="," id="qel-Hl-vIS">
                     <connections>
                         <action selector="orderFront:" target="69z-6a-Pnv" id="M2j-yR-VuN"/>
@@ -45,7 +41,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="675.5" y="495.5"/>
+            <point key="canvasLocation" x="89" y="178.5"/>
         </menu>
         <window title="WC Status - Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="69z-6a-Pnv" customClass="SettingsWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -57,7 +53,6 @@
                 <subviews>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oj2-Jj-HLC">
                         <rect key="frame" x="128" y="137" width="253" height="22"/>
-                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="http://192.168.1.252" drawsBackground="YES" id="0Tq-P9-30t">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -66,7 +61,6 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3KG-0p-dDc">
                         <rect key="frame" x="18" y="140" width="63" height="17"/>
-                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Host / IP:" id="Olh-Du-nWX">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -75,7 +69,6 @@
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1q-MZ-kHk">
                         <rect key="frame" x="128" y="106" width="39" height="22"/>
-                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1" drawsBackground="YES" id="rnp-sT-XJu">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -84,7 +77,6 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E2c-A1-5UC">
                         <rect key="frame" x="18" y="108" width="104" height="17"/>
-                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Update Interval:" id="rFr-Ym-Q9J">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -93,7 +85,6 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EhN-cG-ljv">
                         <rect key="frame" x="173" y="109" width="11" height="17"/>
-                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="s" id="6SA-5p-T79">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -102,7 +93,6 @@
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O7M-GT-A8M">
                         <rect key="frame" x="287" y="13" width="100" height="32"/>
-                        <animations/>
                         <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S4M-cW-okv">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -113,7 +103,6 @@
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mzv-dk-DSK">
                         <rect key="frame" x="187" y="13" width="100" height="32"/>
-                        <animations/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="U8A-bK-KCR">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -125,33 +114,33 @@ Gw
                             <action selector="performClose:" target="69z-6a-Pnv" id="T4p-f6-TJz"/>
                         </connections>
                     </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2W-v5-yCt">
-                        <rect key="frame" x="126" y="72" width="61" height="18"/>
-                        <animations/>
-                        <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Eo7-ih-56g">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiM-hS-Fbc">
-                        <rect key="frame" x="18" y="53" width="109" height="42"/>
-                        <animations/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Play sound when available" id="PGW-dw-jOg">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gKv-gX-Zw2">
                         <rect key="frame" x="321" y="65" width="48" height="48"/>
-                        <animations/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="HBs-0Q-Mil"/>
                     </imageView>
                 </subviews>
-                <animations/>
             </view>
-            <point key="canvasLocation" x="-103.5" y="234.5"/>
+            <point key="canvasLocation" x="-353.5" y="226.5"/>
         </window>
+        <customView id="maS-Bw-TrV">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geb-99-S6Y">
+                    <rect key="frame" x="5" y="41" width="118" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0m 0s" id="YXz-Wn-yCD">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iR1-5K-OaB">
+                    <rect key="frame" x="129" y="31" width="27" height="27"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="fte-Y4-mHy"/>
+                </imageView>
+            </subviews>
+            <point key="canvasLocation" x="26.5" y="387"/>
+        </customView>
     </objects>
     <resources>
         <image name="icon" width="48" height="48"/>
