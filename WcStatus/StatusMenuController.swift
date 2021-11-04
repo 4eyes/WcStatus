@@ -13,24 +13,24 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var occupiedTime: NSMenuItem!
     
     let disconnectedCachedTime = 10
-    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     override func awakeFromNib() {
         let icon = NSImage(named: "menu-na")
-        icon?.template = true // best for dark mode
-        statusItem.image = icon
+        icon?.isTemplate = true // best for dark mode
+        statusItem.button!.image = icon
         statusItem.menu = statusMenu
         
         // start timer with interval configured in settings
         // mainrunloop?
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(StatusMenuController.updateStatus), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(StatusMenuController.updateStatus), userInfo: nil, repeats: true)
     }
     
-    func updateStatus(){
+    @objc func updateStatus(){
         // get status from server
         let statusApi = StatusApi()
         statusApi.fetchStatus(
-            { status in
+            success: { status in
                 NSLog("\(status)")
             
                 var iconName = "menu-na"
@@ -48,24 +48,30 @@ class StatusMenuController: NSObject {
             
                 // update image
                 // Update time, set title to occupiedtime
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.statusItem.image = NSImage(named: iconName)
-                    self.occupiedTime.title = timeString
+                DispatchQueue.global(qos: .background).async {
+                    // Background Thread
+                    DispatchQueue.main.async {
+                        self.statusItem.button!.image = NSImage(named: iconName)
+                        self.occupiedTime.title = timeString
+                    }
                 }
             }
-            , { error in
+            , failure: { error in
                 let iconName = "menu-na"
                 let timeString = "-"
                 
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.statusItem.image = NSImage(named: iconName)
+                DispatchQueue.global(qos: .background).async {
+                    // Background Thread
+                    DispatchQueue.main.async {
+                    self.statusItem.button!.image = NSImage(named: iconName)
                     self.occupiedTime.title = timeString
+                    }
                 }
             }
         )
     }
     
     @IBAction func quitClicked(sender: NSMenuItem) {
-        NSApplication.sharedApplication().terminate(self)
+        NSApplication.shared.terminate(self)
     }
 }

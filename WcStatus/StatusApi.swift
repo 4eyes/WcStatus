@@ -16,20 +16,20 @@ struct Status {
 var running = false
 
 class StatusApi {
-    let BASE_URL = "http://192.168.1.252"
+    let BASE_URL = "http://192.168.4.253"
     
-    func fetchStatus(success: (Status) -> Void, _ failure: (NSError -> Void)?){
+    func fetchStatus(success: @escaping (Status) -> Void, failure: ((Error) -> Void)?){
         if(!running){
-            let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+            let configuration = URLSessionConfiguration.default
             configuration.timeoutIntervalForRequest = 5
             configuration.timeoutIntervalForResource = 10
         
-            let session = NSURLSession(configuration: configuration)
-            let url = NSURL(string: BASE_URL)
-            let task = session.dataTaskWithURL(url!) { data, response, error in
+            let session = URLSession(configuration: configuration)
+            let url = URL(string: BASE_URL)
+            let task = session.dataTask(with: url!) { data, response, error in
                 running = false
                 if error != nil {
-                    if error?.code ==  NSURLErrorTimedOut {
+                    if error?._code ==  NSURLErrorTimedOut {
                         NSLog("Timeout")
                         failure?(error!)
                     } else {
@@ -38,16 +38,16 @@ class StatusApi {
                     }
                 } else {
                     // then check the response code
-                    if let httpResponse = response as? NSHTTPURLResponse {
+                    if let httpResponse = response as? HTTPURLResponse {
                         switch httpResponse.statusCode {
                             case 200: // all good!
-                                if let status = self.statusFromJSONData(data!){
+                            if let status = self.statusFromJSONData(data: data!){
                                     success(status)
                                 }
                             case 401: // unauthorized
                                 NSLog("status api returned an 'unauthorized' response.")
                             default:
-                                NSLog("status api returned response: %d %@", httpResponse.statusCode, NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode))
+                            NSLog("status api returned response: %d %@", httpResponse.statusCode, HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode))
                         }
                     }
                 }
@@ -57,12 +57,12 @@ class StatusApi {
         }
     }
     
-    func statusFromJSONData(data: NSData) -> Status? {
+    func statusFromJSONData(data: Data) -> Status? {
         typealias JSONDict = [String:AnyObject]
         let json : JSONDict
         
         do {
-            json = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! JSONDict
+            json = try JSONSerialization.jsonObject(with: data, options: []) as! JSONDict
         } catch {
             NSLog("JSON parsing failed: \(error)")
             return nil
